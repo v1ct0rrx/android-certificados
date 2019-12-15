@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     StrictMode.setThreadPolicy(policy);
 
                     RestTemplate restTemplate = MainActivity.this.ejemplo();
-                    String url = "https://api-lite.brlabsdev.com:9451/auraWebServices/service/api/v1/configuration/version";
+                    String url = "https://vvelazquez.com:8443/ejemplo3-0.0.1";
                     HttpHeaders headers = new HttpHeaders();
                     headers.add("Content-Type", "application/json");
                     HttpEntity<String> request = new HttpEntity<String>(headers);
@@ -120,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
     public RestTemplate ejemplo() throws Exception {
 
         InputStream is = getResources().openRawResource(R.raw.victor);
-        InputStream is2 = getResources().openRawResource(R.raw.lite);
 
         SSLContext sslcontext = null;
         TrustManager[] trustManagers = null;
@@ -131,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
         HttpHeaders headers = null;
 
         sslcontext = SSLContext.getInstance("TLS");
-       // trustManagers = getTrustManagers("JKS", is2, "123456");
         keyManagers = getKeyManagers("pkcs12", is, "Victor");
         sslcontext.init(keyManagers, trustManagers, new SecureRandom());
 
